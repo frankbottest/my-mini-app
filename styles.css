@@ -8,20 +8,27 @@ body {
 
 .menu {
     display: flex;
-    background-color: #333333;
+    background-color: rgba(51, 51, 51, 0.8);
     justify-content: space-around;
-    padding: 10px 0;
+    padding: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .menu a {
     color: #ffffff;
-    padding: 14px 20px;
+    padding: 10px;
     text-decoration: none;
     text-align: center;
     border-radius: 8px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    display: block;
-    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    margin: 0 5px;
 }
 
 .menu a.active {
@@ -31,6 +38,17 @@ body {
 
 .menu a:hover {
     background-color: #575757;
+}
+
+.menu img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 5px;
+}
+
+.menu span {
+    font-size: 12px;
+    line-height: 1;
 }
 
 #content {
@@ -65,14 +83,17 @@ body {
 }
 
 @media (max-width: 600px) {
-    .menu {
-        flex-direction: column;
-        align-items: center;
-    }
     .menu a {
-        padding: 10px 0;
-        width: 100%;
-        text-align: center;
+        width: 60px;
+        height: 60px;
+        padding: 5px;
+    }
+    .menu img {
+        width: 20px;
+        height: 20px;
+    }
+    .menu span {
+        font-size: 10px;
     }
 }
 
