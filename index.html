@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        function onTelegramButtonClick() {
+            Telegram.WebApp.sendData("Button clicked");
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            Telegram.WebApp.ready();
+            Telegram.WebApp.MainButton.setText('Click Me').show();
+            Telegram.WebApp.MainButton.onClick(onTelegramButtonClick);
+        });
+    </script>
+</head>
+<body>
+    <h1>Welcome to My Simple Mini App</h1>
+    <p>This is a simple Telegram Mini App example.</p>
+    <button
