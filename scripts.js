@@ -9,16 +9,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             loadContent(target);
             setActiveMenuItem(item);
         });
-
-        // Обработчик для вложенных элементов
-        item.querySelectorAll('*').forEach(child => {
-            child.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = item.getAttribute('href').substring(1);
-                loadContent(target);
-                setActiveMenuItem(item);
-            });
-        });
     });
 
     function loadContent(target) {
