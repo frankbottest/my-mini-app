@@ -5,42 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Simple Mini App</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
-    <link rel="stylesheet" href="styles.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            Telegram.WebApp.ready();
-
-            const menuItems = document.querySelectorAll('.menu-item');
-            menuItems.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const target = e.target.getAttribute('href').substring(1);
-                    loadContent(target);
-                    setActiveMenuItem(e.target);
-                });
-            });
-
-            function loadContent(target) {
-                const content = document.getElementById('content');
-                fetch(`content/${target}.html`)
-                    .then(response => response.text())
-                    .then(data => {
-                        content.innerHTML = data;
-                    });
-            }
-
-            function setActiveMenuItem(activeItem) {
-                menuItems.forEach(item => item.classList.remove('active'));
-                activeItem.classList.add('active');
-            }
-
-            loadContent('home'); // Load home content by default
-            setActiveMenuItem(document.querySelector('.menu-item[href="#home"]'));
-        });
-    </script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="content"></div>
     <div class="menu">
         <a href="#home" class="menu-item">
             <img src="https://img.icons8.com/ios-filled/24/ffffff/home.png" alt="Home"><span>Главная</span>
@@ -49,7 +18,7 @@
             <img src="https://img.icons8.com/ios-filled/24/ffffff/exchange.png" alt="Exchanges"><span>Биржи</span>
         </a>
         <a href="#trading" class="menu-item">
-            <img src="https://img.icons8.com/ios-filled/24/ffffff/trading.png" alt="Trading"><span>Трейдинг</span>
+            <img src="https://img.icons8.com/ios-filled/24/ffffff/bar-chart.png" alt="Trading"><span>Трейдинг</span>
         </a>
         <a href="#education" class="menu-item">
             <img src="https://img.icons8.com/ios-filled/24/ffffff/education.png" alt="Education"><span>Обучение</span>
@@ -58,6 +27,6 @@
             <img src="https://img.icons8.com/ios-filled/24/ffffff/book.png" alt="Glossary"><span>Словарь</span>
         </a>
     </div>
-    <div id="content"></div>
+    <script src="scripts.js"></script>
 </body>
 </html>

@@ -4,6 +4,17 @@ body {
     color: #ffffff;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#content {
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+    flex: 1;
+    overflow-y: auto;
 }
 
 .menu {
@@ -13,6 +24,7 @@ body {
     padding: 10px;
     overflow-x: auto;
     white-space: nowrap;
+    border-radius: 12px;
 }
 
 .menu a {
@@ -25,6 +37,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 80px;
     height: 80px;
     flex-shrink: 0;
@@ -49,12 +62,6 @@ body {
 .menu span {
     font-size: 12px;
     line-height: 1;
-}
-
-#content {
-    padding: 20px;
-    max-width: 1000px;
-    margin: auto;
 }
 
 .links {
