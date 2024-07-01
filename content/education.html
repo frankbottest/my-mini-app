@@ -1,0 +1,15 @@
+<h2>Обучение</h2>
+<p>Информация о курсе.</p>
+<button onclick="startCourse()">Начать курс</button>
+<div id="course-content"></div>
+<script>
+    function startCourse() {
+        const courseContent = document.getElementById('course-content');
+        courseContent.innerHTML = '<h3>Урок 1</h3><p>Содержание урока 1.</p><button onclick="nextLesson(2)">Следующий урок</button>';
+    }
+
+    function nextLesson(lessonNumber) {
+        const courseContent = document.getElementById('course-content');
+        courseContent.innerHTML = `<h3>Урок ${lessonNumber}</h3><p>Содержание урока ${lessonNumber}.</p><button onclick="nextLesson(${lessonNumber + 1})">Следующий урок</button>`;
+    }
+</script>

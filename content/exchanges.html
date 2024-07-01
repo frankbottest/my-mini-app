@@ -1,0 +1,25 @@
+<h2>Биржи</h2>
+<ul>
+    <li><a href="#bybit" class="menu-item">Bybit</a></li>
+    <li><a href="#bingx" class="menu-item">BingX</a></li>
+    <li><a href="#okx" class="menu-item">OKX</a></li>
+    <li><a href="#binance" class="menu-item">Binance</a></li>
+</ul>
+<div id="subcontent"></div>
+<script>
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const subTarget = this.getAttribute('href').substring(1);
+            loadSubContent(subTarget);
+        });
+    });
+
+    function loadSubContent(subTarget) {
+        fetch(`content/exchanges/${subTarget}.html`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('subcontent').innerHTML = data;
+            });
+    }
+</script>

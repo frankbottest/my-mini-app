@@ -1,23 +1,49 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Simple Mini App</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        function onTelegramButtonClick() {
-            Telegram.WebApp.sendData("Button clicked");
-        }
-
         document.addEventListener('DOMContentLoaded', (event) => {
             Telegram.WebApp.ready();
             Telegram.WebApp.MainButton.setText('Click Me').show();
-            Telegram.WebApp.MainButton.onClick(onTelegramButtonClick);
+            Telegram.WebApp.MainButton.onClick(() => {
+                Telegram.WebApp.sendData("Button clicked");
+            });
+
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = e.target.getAttribute('href').substring(1);
+                    loadContent(target);
+                });
+            });
+
+            function loadContent(target) {
+                const content = document.getElementById('content');
+                fetch(`content/${target}.html`)
+                    .then(response => response.text())
+                    .then(data => {
+                        content.innerHTML = data;
+                    });
+            }
+
+            loadContent('home'); // Load home content by default
         });
     </script>
 </head>
 <body>
-    <h1>Добро пожаловать</h1>
-    <p>This is a simple Telegram Mini App example.</p>
-    <button
+    <div class="menu">
+        <a href="#home" class="menu-item">Главная</a>
+        <a href="#exchanges" class="menu-item">Биржи</a>
+        <a href="#trading" class="menu-item">Трейдинг</a>
+        <a href="#education" class="menu-item">Обучение</a>
+        <a href="#glossary" class="menu-item">Словарь</a>
+    </div>
+    <div id="content"></div>
+</body>
+</html>
