@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     background-color: #121212;
     color: #ffffff;
     margin: 0;
@@ -14,11 +14,19 @@ body {
 }
 
 .menu a {
-    color: #FFD700;
+    color: #ffffff;
     padding: 14px 20px;
     text-decoration: none;
     text-align: center;
-    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: block;
+    width: 100px;
+}
+
+.menu a.active {
+    background-color: #FFD700;
+    color: #000000;
 }
 
 .menu a:hover {

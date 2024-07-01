@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Simple Mini App</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
     <link rel="stylesheet" href="styles.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             Telegram.WebApp.ready();
-            Telegram.WebApp.MainButton.setText('Click Me').show();
-            Telegram.WebApp.MainButton.onClick(() => {
-                Telegram.WebApp.sendData("Button clicked");
-            });
 
             const menuItems = document.querySelectorAll('.menu-item');
             menuItems.forEach(item => {
@@ -20,6 +17,7 @@
                     e.preventDefault();
                     const target = e.target.getAttribute('href').substring(1);
                     loadContent(target);
+                    setActiveMenuItem(e.target);
                 });
             });
 
@@ -32,7 +30,13 @@
                     });
             }
 
+            function setActiveMenuItem(activeItem) {
+                menuItems.forEach(item => item.classList.remove('active'));
+                activeItem.classList.add('active');
+            }
+
             loadContent('home'); // Load home content by default
+            setActiveMenuItem(document.querySelector('.menu-item[href="#home"]'));
         });
     </script>
 </head>
